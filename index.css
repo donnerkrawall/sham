@@ -12,13 +12,7 @@ h1{
 
 }
 
-h2{
-    
 
-
-}
-
-p{}
 
 
 #features{
@@ -54,5 +48,30 @@ button{
     box-shadow: 0 6px 24px rgba(51, 207, 255, 0.6);
     transform: translateY(-2px);
     }
+
+#about{
+    margin-top: 2em;
+    padding: 1em;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    max-width: 56%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input{
+
+  margin-bottom: 2em;
+    background: linear-gradient(135deg, #1a1aff, #009dff);
+    color: white;
+     box-shadow: 0 4px 18px rgba(255, 255, 255, 0.35);
+    transition: all 0.2s ease;
+ font-size: 1em;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 0.4em 0.9em;
+}
 
 

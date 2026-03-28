@@ -1,0 +1,39 @@
+
+
+
+const Words = [
+  // Places (25)
+  "city", "village", "beach", "park", "school",
+  "hospital", "shop", "restaurant", "airport", "station",
+  "hotel", "forest", "mountain", "river", "lake",
+  "desert", "island", "farm", "market", "road",
+  "bridge", "tunnel", "house", "room", "garden",
+
+  // Jobs (20)
+  "doctor", "teacher", "police", "cook", "driver",
+  "farmer", "worker", "artist", "singer", "actor",
+  "builder", "cleaner", "pilot", "nurse", "guard",
+  "seller", "writer", "painter", "engineer", "chef",
+
+  // Activities (20)
+  "run", "walk", "eat", "drink", "sleep",
+  "read", "write", "sing", "dance", "cook",
+  "drive", "build", "clean", "play", "watch",
+  "listen", "talk", "jump", "swim", "work",
+
+  // Objects (20)
+  "car", "phone", "book", "table", "chair",
+  "bed", "door", "window", "bag", "key",
+  "food", "water", "money", "clock", "pen",
+  "paper", "box", "light", "computer", "shoe",
+
+  // Nature / Misc (15)
+  "sun", "moon", "star", "sky", "rain",
+  "snow", "wind", "fire", "tree", "flower",
+  "stone", "sand", "cloud", "sea", "grass"
+];
+
+
+
+
+
