@@ -6,8 +6,22 @@
     <title>Sham - Game</title>
     <script src="game.js" defer></script>
        <link rel="stylesheet" href="index.css">
+       <link rel="stylesheet" href="gameplay.css">
 </head>
 <body>
-     <p id="theword"></p>
+    
+     <p id="name"></p>
+ <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">  
+    </div>
+    
+    <div class="flip-card-back">
+      <p id="theword"></p>
+      <button onclick="nextPlayer(), location.href='gameplay.html'">Next Person</button>
+    </div>
+    
+  </div>
+</div>
 </body>
 </html>

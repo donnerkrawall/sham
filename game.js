@@ -49,3 +49,7 @@ function getWord() {
 }
 
 
+function nextPlayer() {
+
+
+}
