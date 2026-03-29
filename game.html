@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sham</title>
-    <script src="game.js"></script>
+    <script src="game.js" defer></script>
       <link rel="stylesheet" href="index.css">
     
 </head>
@@ -15,14 +15,15 @@
     <br>
     <p id="namesOutput">The Current Player are: </p>
     <br>
-    <div id="words"></div>
+
+    <!--<div id="words"></div>
     <input id="words" placeholder="Insert custom words">
     <p id="wordsOutput"></p>
     <br>
-    <button onclick="submitWords()">Submit Word</button>
+    <button onclick="submitWords()">Submit Word</button> -->
     <br>
-        <button style="margin-top: 2em;" onclick="getWord()">Get a new Word</button>
-        <p id="theword"></p>
+        <button style="margin-top: 2em;" onclick="getWord(); location.href='gameplay.html'">Get a new Word <br> and Start a Round</button>
+       
        
 </body>
 </html>

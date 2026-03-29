@@ -1,4 +1,10 @@
+window.onload = function () {
+  let word = localStorage.getItem("currentWord");
 
+  if (word && document.getElementById("theword")) {
+    document.getElementById("theword").innerHTML = word;
+  }
+};
 
 
 const Words = [
@@ -34,6 +40,12 @@ const Words = [
 ];
 
 
+function getWord() {
+  let WordNumber = Math.floor(Math.random() * Words.length);
+  let Word = Words[WordNumber];
 
+
+  localStorage.setItem("currentWord", Word);
+}
 
 
