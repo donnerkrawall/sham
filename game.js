@@ -1,11 +1,22 @@
-window.onload = function () {
-  let word = localStorage.getItem("currentWord");
 
+ 
+window.onload = function () {
+ 
+
+  let word = localStorage.getItem("currentWord");
   if (word && document.getElementById("theword")) {
     document.getElementById("theword").innerHTML = word;
   }
-};
 
+
+
+  let players = JSON.parse(localStorage.getItem("players"));
+
+  if (players && document.getElementById("namesOutput")) {
+    document.getElementById("namesOutput").innerHTML =
+      "Current players: " + players.join(", ");
+  }
+};
 
 const Words = [
   // Places (25)
@@ -47,6 +58,34 @@ function getWord() {
 
   localStorage.setItem("currentWord", Word);
 }
+
+
+
+
+function submitName() {
+  let input = document.getElementById("name").value.trim();
+  if (input === "") return;
+
+  let players;
+
+  try {
+    players = JSON.parse(localStorage.getItem("players"));
+    if (!Array.isArray(players)) players = [];
+  } catch {
+    players = [];
+  }
+
+  players.push(input);
+
+  localStorage.setItem("players", JSON.stringify(players));
+
+
+  let output = document.getElementById("namesOutput");
+
+if (output && players) {
+  output.innerHTML = "Current players: " + players.join(", ");
+}
+  }
 
 
 function nextPlayer() {
