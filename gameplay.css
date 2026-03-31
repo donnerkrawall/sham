@@ -11,7 +11,7 @@ button{
 }
 
 p{
-    font-size: 150%;
+    font-size: 160%;
 }
 
 /* Sorce:  https://www.w3schools.com/howto/howto_css_flip_card.asp  */
@@ -39,8 +39,9 @@ p{
 }
 
 /* EINHEITLICHER TRIGGER */
-.flip-card:hover .flip-card-inner {
+.flip-card:active .flip-card-inner {
   transform: rotateY(180deg);
+
 }
 
 .flip-card-front, .flip-card-back {
@@ -69,7 +70,7 @@ p{
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.flip-card:hover .flip-card-back button {
+.flip-card:active .flip-card-back button {
   opacity: 1;
   transform: translateY(0);
 }
