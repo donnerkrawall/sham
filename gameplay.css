@@ -38,10 +38,8 @@ p{
   transform-style: preserve-3d;
 }
 
-/* EINHEITLICHER TRIGGER */
-.flip-card:active .flip-card-inner {
+.flip-card.flipped .flip-card-inner {
   transform: rotateY(180deg);
-
 }
 
 .flip-card-front, .flip-card-back {
@@ -61,16 +59,4 @@ p{
   background: linear-gradient(135deg, #1a1aff, #009dff);
   color: white;
   transform: rotateY(180deg);
-}
-
-/* BUTTON */
-.flip-card-back button {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.flip-card:active .flip-card-back button {
-  opacity: 1;
-  transform: translateY(0);
 }

@@ -9,19 +9,27 @@
        <link rel="stylesheet" href="gameplay.css">
 </head>
 <body>
+  <div id="languageSwitcher">
+    <select id="languageSelect" onchange="setLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </div>
     
      <p id="currentPlayer"></p>
- <div class="flip-card">
+ <div class="flip-card" id="flipCard" onclick="toggleCard()">
   <div class="flip-card-inner">
-    <div class="flip-card-front">  
+    <div class="flip-card-front">
+      <p id="flipInstruction">Flip the card</p>
     </div>
     
     <div class="flip-card-back">
       <p id="theword"></p>
-      <button onclick="nextPlayer()">Next Person</button>
     </div>
   </div>
 </div>
+
+<button id="nextButton" onclick="nextPlayer()" style="display:none">Next Person</button>
 
 <p id="end"></p>
 </body>

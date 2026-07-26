@@ -2,46 +2,215 @@ window.onload = function () {
   renderPlayers();
   updateRoundView();
   initFinalPage();
+  initGameState();
+  applyLanguage();
 };
 
-const Words = [
-  // Places (25)
-  "city", "village", "beach", "park", "school",
-  "hospital", "shop", "restaurant", "airport", "station",
-  "hotel", "forest", "mountain", "river", "lake",
-  "desert", "island", "farm", "market", "road",
-  "bridge", "tunnel", "house", "room", "garden",
+const translations = {
+  en: {
+    welcomeTitle: "Welcome to Sham <br> The New Imposter Game",
+    playGameTitle: "Play the Game Now!",
+    playButton: "Play Game",
+    featuresTitle: "Features",
+    featuresText: "Create your own themes to match your group's preferences.<br><br>Seating-Based Name Entry: Input player names in a circular order to make turn-taking intuitive and an organized gameplay.<br><br>Fast Game Setup: Minimal steps from start to play, reducing friction and improving user experience.<br><br>Better Gameplay: Suitable for small and large groups with adaptable rules.<br><br>Clean Interface: Focused design for distraction-free gameplay.",
+    aboutTitle: "About us",
+    aboutText: "Sham is a free to play game for you and your friends.",
+    namePlaceholder: "Insert Player Names",
+    submitName: "Submit Name",
+    currentPlayers: "Current Players:",
+    startRoundButton: "Get a new Word <br> and Start a Round",
+    currentPlayer: "Current Player: ",
+    flipInstruction: "Flip the card",
+    nextPerson: "Next Person",
+    allPlayersSeen: "All players have seen their card.",
+    startGame: "Start Game",
+    waitingStart: "Waiting for game start...",
+    finalMessage: "Start Playing, at the end click to reveal the Impostor.",
+    revealImpostor: "Reveal Impostor",
+    impostorFound: "The Impostor was:",
+    noImpostor: "No impostor found.",
+    backToStart: "Back to Start"
+  },
+  de: {
+    welcomeTitle: "Willkommen bei Sham <br> Das neue Impostor-Spiel",
+    playGameTitle: "Spiel jetzt!",
+    playButton: "Spiel starten",
+    featuresTitle: "Funktionen",
+    featuresText: "Erstelle eigene Themen, um das Spiel an die Vorlieben deiner Gruppe anzupassen.<br><br>Sitzungsbasierte Namenseingabe: Gib Spielernamen in Reihenfolge ein, um die Spielreihenfolge intuitiv und organisiert zu gestalten.<br><br>Schneller Spielstart: Wenige Schritte bis zum Spielbeginn für eine bessere Benutzererfahrung.<br><br>Besseres Gameplay: Geeignet für kleine und große Gruppen mit anpassbaren Regeln.<br><br>Sauberes Interface: Fokussiertes Design für ablenkungsfreies Spielen.",
+    aboutTitle: "Über uns",
+    aboutText: "Sham ist ein kostenloses Spiel für dich und deine Freunde.",
+    namePlaceholder: "Spielernamen eingeben",
+    submitName: "Namen eintragen",
+    currentPlayers: "Aktuelle Spieler:",
+    startRoundButton: "Neues Wort holen <br> und Runde starten",
+    currentPlayer: "Aktueller Spieler: ",
+    flipInstruction: "Karte umdrehen",
+    nextPerson: "Nächste Person",
+    allPlayersSeen: "Alle Spieler haben ihre Karte gesehen.",
+    startGame: "Spiel starten",
+    waitingStart: "Warten auf Spielstart...",
+    finalMessage: "Spielt los. Am Ende klickt auf Enthülle den Impostor.",
+    revealImpostor: "Impostor enthüllen",
+    impostorFound: "Der Impostor war:",
+    noImpostor: "Kein Impostor gefunden.",
+    backToStart: "Zurück zum Start"
+  }
+};
 
-  // Jobs (20)
-  "doctor", "teacher", "police", "cook", "driver",
-  "farmer", "worker", "artist", "singer", "actor",
-  "builder", "cleaner", "pilot", "nurse", "guard",
-  "seller", "writer", "painter", "engineer", "chef",
+function getLanguage() {
+  return localStorage.getItem("language") || "en";
+}
 
-  // Activities (20)
-  "run", "walk", "eat", "drink", "sleep",
-  "read", "write", "sing", "dance", "cook",
-  "drive", "build", "clean", "play", "watch",
-  "listen", "talk", "jump", "swim", "work",
+function setLanguage(language) {
+  if (!translations[language]) {
+    language = "en";
+  }
+  localStorage.setItem("language", language);
+  applyLanguage();
+}
 
-  // Objects (20)
-  "car", "phone", "book", "table", "chair",
-  "bed", "door", "window", "bag", "key",
-  "food", "water", "money", "clock", "pen",
-  "paper", "box", "light", "computer", "shoe",
+function getTranslation(key) {
+  const language = getLanguage();
+  const text = translations[language] && translations[language][key];
+  return text !== undefined ? text : key;
+}
 
-  // Nature / Misc (15)
-  "sun", "moon", "star", "sky", "rain",
-  "snow", "wind", "fire", "tree", "flower",
-  "stone", "sand", "cloud", "sea", "grass"
-];
+function applyLanguage() {
+  const language = getLanguage();
+  const select = document.getElementById("languageSelect");
+  if (select) {
+    select.value = language;
+  }
+
+  const welcomeTitle = document.getElementById("welcomeTitle");
+  if (welcomeTitle) {
+    welcomeTitle.innerHTML = getTranslation("welcomeTitle");
+  }
+
+  const playGameTitle = document.getElementById("playGameTitle");
+  if (playGameTitle) {
+    playGameTitle.innerHTML = getTranslation("playGameTitle");
+  }
+
+  const playButton = document.getElementById("playButton");
+  if (playButton) {
+    playButton.textContent = getTranslation("playButton");
+  }
+
+  const featuresTitle = document.getElementById("featuresTitle");
+  if (featuresTitle) {
+    featuresTitle.textContent = getTranslation("featuresTitle");
+  }
+
+  const featuresp = document.getElementById("featuresp");
+  if (featuresp) {
+    featuresp.innerHTML = getTranslation("featuresText");
+  }
+
+  const aboutTitle = document.getElementById("aboutTitle");
+  if (aboutTitle) {
+    aboutTitle.textContent = getTranslation("aboutTitle");
+  }
+
+  const aboutText = document.getElementById("aboutText");
+  if (aboutText) {
+    aboutText.textContent = getTranslation("aboutText");
+  }
+
+  const nameInput = document.getElementById("name");
+  if (nameInput) {
+    nameInput.placeholder = getTranslation("namePlaceholder");
+  }
+
+  const submitNameButton = document.getElementById("submitNameButton");
+  if (submitNameButton) {
+    submitNameButton.textContent = getTranslation("submitName");
+  }
+
+  const namesOutput = document.getElementById("namesOutput");
+  if (namesOutput) {
+    namesOutput.textContent = getTranslation("currentPlayers");
+  }
+
+  const startRoundButton = document.getElementById("startRoundButton");
+  if (startRoundButton) {
+    startRoundButton.innerHTML = getTranslation("startRoundButton");
+  }
+
+  const flipInstruction = document.getElementById("flipInstruction");
+  if (flipInstruction) {
+    flipInstruction.textContent = getTranslation("flipInstruction");
+  }
+
+  const nextButton = document.getElementById("nextButton");
+  if (nextButton) {
+    nextButton.textContent = getTranslation("nextPerson");
+  }
+
+  const finalMessage = document.getElementById("finalMessage");
+  if (finalMessage) {
+    finalMessage.textContent = getTranslation("finalMessage");
+  }
+
+  const revealButton = document.getElementById("revealButton");
+  if (revealButton) {
+    revealButton.textContent = getTranslation("revealImpostor");
+  }
+
+  showCurrentPlayer();
+}
+
+const wordLists = {
+  en: [
+    "city", "village", "beach", "park", "school",
+    "hospital", "shop", "restaurant", "airport", "station",
+    "hotel", "forest", "mountain", "river", "lake",
+    "desert", "island", "farm", "market", "road",
+    "bridge", "house", "room", "garden", "doctor",
+    "teacher", "police", "cook", "driver", "farmer",
+    "worker", "artist", "singer", "actor", "builder",
+    "cleaner", "pilot", "nurse", "guard", "seller",
+    "writer", "painter", "engineer", "chef", "run",
+    "walk", "eat", "drink", "sleep", "read", "write",
+    "sing", "dance", "build", "clean", "play", "watch",
+    "listen", "talk", "jump", "swim", "work", "car",
+    "phone", "book", "table", "chair", "bed", "door",
+    "window", "bag", "key", "food", "water", "money",
+    "clock", "pen", "paper", "box", "light", "computer",
+    "shoe", "sun", "moon", "star", "sky", "rain",
+    "snow", "wind", "fire", "tree", "flower", "stone",
+    "sand", "cloud", "sea", "grass"
+  ],
+  de: [
+    "Stadt", "Dorf", "Strand", "Park", "Schule",
+    "Krankenhaus", "Laden", "Restaurant", "Flughafen", "Bahnhof",
+    "Hotel", "Wald", "Berg", "Fluss", "See",
+    "Wüste", "Insel", "Bauernhof", "Markt", "Straße",
+    "Brücke", "Haus", "Zimmer", "Garten", "Arzt",
+    "Lehrer", "Polizist", "Koch", "Fahrer", "Bauer",
+    "Arbeiter", "Künstler", "Sänger", "Schauspieler", "Bauarbeiter",
+    "Reinigungskraft", "Pilot", "Krankenschwester", "Wächter", "Verkäufer",
+    "Autor", "Maler", "Ingenieur", "Koch", "laufen",
+    "gehen", "essen", "trinken", "schlafen", "lesen",
+    "schreiben", "singen", "tanzen", "bauen", "putzen", "spielen",
+    "schauen", "zuhören", "reden", "springen", "schwimmen", "arbeiten",
+    "Auto", "Handy", "Buch", "Tisch", "Stuhl", "Bett",
+    "Tür", "Fenster", "Tasche", "Schlüssel", "Essen", "Wasser",
+    "Geld", "Uhr", "Stift", "Papier", "Kiste", "Licht",
+    "Computer", "Schuh", "Sonne", "Mond", "Stern", "Himmel",
+    "Regen", "Schnee", "Wind", "Feuer", "Baum", "Blume",
+    "Stein", "Sand", "Wolke", "Meer", "Gras"
+  ]
+};
 
 function getWord() {
   let players = JSON.parse(localStorage.getItem("players")) || [];
   if (players.length === 0) return;
 
-  let wordNumber = Math.floor(Math.random() * Words.length);
-  let word = Words[wordNumber];
+  const language = getLanguage();
+  const words = wordLists[language] || wordLists.en;
+  let wordNumber = Math.floor(Math.random() * words.length);
+  let word = words[wordNumber];
   let impostorIndex = Math.floor(Math.random() * players.length);
 
   localStorage.setItem("currentWord", word);
@@ -94,7 +263,40 @@ function showCurrentPlayer() {
 
   if (!output || players.length === 0 || index >= players.length) return;
 
-  output.innerHTML = "Current Player: " + players[index];
+  output.innerHTML = getTranslation("currentPlayer") + players[index];
+}
+
+function initGameState() {
+  resetCard();
+  hideNextButton();
+}
+
+function resetCard() {
+  let card = document.getElementById("flipCard");
+  if (card) card.classList.remove("flipped");
+}
+
+function showNextButton() {
+  let button = document.getElementById("nextButton");
+  if (button) button.style.display = "inline-block";
+}
+
+function hideNextButton() {
+  let button = document.getElementById("nextButton");
+  if (button) button.style.display = "none";
+}
+
+function toggleCard() {
+  let card = document.getElementById("flipCard");
+  if (!card) return;
+
+  if (card.classList.contains("flipped")) {
+    card.classList.remove("flipped");
+    showNextButton();
+  } else {
+    card.classList.add("flipped");
+    hideNextButton();
+  }
 }
 
 function nextPlayer() {
@@ -106,18 +308,22 @@ function nextPlayer() {
   if (index >= players.length) {
     let end = document.getElementById("end");
     if (end) {
-      end.innerHTML = `All players have seen their card.<br><button onclick="startGameFinal()">Start Game</button>`;
+      end.innerHTML = `${getTranslation("allPlayersSeen")}<br><button onclick="startGameFinal()">${getTranslation("startGame")}</button>`;
     }
 
     let currentPlayer = document.getElementById("currentPlayer");
     if (currentPlayer) currentPlayer.innerHTML = "";
 
     let output = document.getElementById("theword");
-    if (output) output.innerHTML = "Waiting for game start...";
+    if (output) output.innerHTML = getTranslation("waitingStart");
+    hideNextButton();
+    resetCard();
     return;
   }
 
   localStorage.setItem("currentIndex", index.toString());
+  resetCard();
+  hideNextButton();
   updateRoundView();
 }
 
@@ -147,7 +353,7 @@ function initFinalPage() {
   let message = document.getElementById("finalMessage");
   if (!message) return;
 
-  message.innerHTML = "Start Playing, at the end click to reveal the Impostor.";
+  message.innerHTML = getTranslation("finalMessage");
 }
 
 function revealImpostor() {
@@ -159,12 +365,12 @@ function revealImpostor() {
   if (!result || !actions) return;
 
   if (players.length === 0 || Number.isNaN(impostorIndex) || !players[impostorIndex]) {
-    result.innerHTML = "No impostor found.";
+    result.innerHTML = getTranslation("noImpostor");
   } else {
-    result.innerHTML = `The Impostor was: <strong>${players[impostorIndex]}</strong>`;
+    result.innerHTML = `${getTranslation("impostorFound")} <strong>${players[impostorIndex]}</strong>`;
   }
 
-  actions.innerHTML = `<button onclick="goToStart()">Back to Start</button>`;
+  actions.innerHTML = `<button onclick="goToStart()">${getTranslation("backToStart")}</button>`;
 }
 
 function goToStart() {

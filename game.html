@@ -9,9 +9,15 @@
     
 </head>
 <body id="body">
+  <div id="languageSwitcher">
+    <select id="languageSelect" onchange="setLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </div>
     <div id="players"></div>
     <input id="name" type="text" placeholder="Insert Player Names"> <br>
-    <button  onclick="submitName()">Submit Name</button>
+    <button id="submitNameButton" onclick="submitName()">Submit Name</button>
     <br>
     <p id="namesOutput">Current Players: </p>
     <br>
@@ -22,7 +28,7 @@
     <br>
     <button onclick="submitWords()">Submit Word</button> -->
     <br>
-        <button style="margin-top: 2em;" onclick="getWord(); location.href='gameplay.html'">Get a new Word <br> and Start a Round</button>
+        <button id="startRoundButton" style="margin-top: 2em;" onclick="getWord(); location.href='gameplay.html'">Get a new Word <br> and Start a Round</button>
        
        
 </body>

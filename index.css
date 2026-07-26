@@ -16,7 +16,21 @@ h1{
 }
 
 
+#languageSwitcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 100;
+}
 
+#languageSwitcher select {
+  font-size: 1rem;
+  padding: 0.4em 0.6em;
+  border-radius: 8px;
+  border: none;
+  background: #111;
+  color: white;
+}
 
 #features{
     margin-top: 2em;

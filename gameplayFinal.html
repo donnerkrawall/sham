@@ -9,9 +9,15 @@
   <link rel="stylesheet" href="gameplay.css">
 </head>
 <body>
+  <div id="languageSwitcher">
+    <select id="languageSelect" onchange="setLanguage(this.value)">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </div>
   <p id="finalMessage"></p>
   <div id="finalActions">
-    <button onclick="revealImpostor()">Reveal Impostor</button>
+    <button id="revealButton" onclick="revealImpostor()">Reveal Impostor</button>
   </div>
   <p id="impostorResult"></p>
 </body>
