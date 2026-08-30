@@ -21,11 +21,12 @@ p{
 
 
 .flip-card {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 3em auto;
   width: 300px;
   height: 200px;
-  border: 1px solid #0a56d1;
+  border: 2px solid #00ff66;
+  box-shadow: 6px 6px 0 #00ff66;
+  background: #0b0b10;
   perspective: 1000px;
 }
 
@@ -50,13 +51,15 @@ p{
 }
 
 .flip-card-front {
-  background: linear-gradient(135deg, #1a1aff, #009dff);
-  color: white;
+  background: #0b0b10;
+  color: #00ff66;
+  border: 2px solid #00ff66;
 }
 
 /* BACK SEITE FEHLTE */
 .flip-card-back {
-  background: linear-gradient(135deg, #1a1aff, #009dff);
-  color: white;
+  background: #00ff66;
+  color: #0b0b10;
+  border: 2px solid #00ff66;
   transform: rotateY(180deg);
 }

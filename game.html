@@ -15,20 +15,26 @@
       <option value="de">Deutsch</option>
     </select>
   </div>
-    <div id="players"></div>
-    <input id="name" type="text" placeholder="Insert Player Names"> <br>
+    <input id="name" type="text" placeholder="Insert Player Names" onkeydown="if(event.key==='Enter')submitName()"> <br>
     <button id="submitNameButton" onclick="submitName()">Submit Name</button>
     <br>
     <p id="namesOutput">Current Players: </p>
+    <div id="playersList"></div>
     <br>
 
-    <!--<div id="words"></div>
-    <input id="words" placeholder="Insert custom words">
-    <p id="wordsOutput"></p>
+    <p id="customWordsTitle">Custom Words:</p>
+    <div id="customWordsList"></div>
+    <input id="wordInput" type="text" placeholder="Insert custom word" onkeydown="if(event.key==='Enter')submitWord()">
+    <button id="addWordButton" onclick="submitWord()">Add Word</button>
+    <button id="clearWordsButton" onclick="clearCustomWords()">Clear Words</button>
     <br>
-    <button onclick="submitWords()">Submit Word</button> -->
+    <label id="onlyCustomWordsLabel">
+      <input type="checkbox" id="onlyCustomWords" onchange="setOnlyCustomWords(this.checked)">
+      <span id="onlyCustomWordsText">Use only my custom words</span>
+    </label>
     <br>
-        <button id="startRoundButton" style="margin-top: 2em;" onclick="getWord(); location.href='gameplay.html'">Get a new Word <br> and Start a Round</button>
+    <br>
+        <button id="startRoundButton" style="margin-top: 2em;" onclick="startRound()">Get a new Word <br> and Start a Round</button>
        
        
 </body>

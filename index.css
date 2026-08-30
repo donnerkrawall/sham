@@ -1,9 +1,10 @@
 body{
-    background-color: black;
-    color: white;
+    background-color: #14141a;
+    color: #f2ecd9;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Courier New', Courier, monospace;
     margin-top: 1em;
+    letter-spacing: 0.02em;
 
     /*Font size to 135, for gitpages */
     font-size: 140%;
@@ -26,10 +27,11 @@ h1{
 #languageSwitcher select {
   font-size: 1rem;
   padding: 0.4em 0.6em;
-  border-radius: 8px;
-  border: none;
-  background: #111;
-  color: white;
+  border-radius: 0;
+  border: 2px solid #00ff66;
+  background: #0b0b10;
+  color: #00ff66;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 #features{
@@ -38,57 +40,99 @@ h1{
     margin-left: auto;
     margin-right: auto;
     font-size: 1em;
-    background: rgba(255, 255, 255, 0.03);
+    background: #0b0b10;
+    color: #00ff66;
     padding: 1.2em;
-    border-radius: 10px;
+    border: 2px solid #00ff66;
+    box-shadow: 6px 6px 0 #00ff66;
   
 }
 
 button{
     font-size: 1.45em;
     font-weight: 600;
-    border: none;
-    border-radius: 8px;
+    border: 2px solid #00ff66;
+    border-radius: 0;
     cursor: pointer;
     padding: 0.4em 0.9em;
-
-    background: linear-gradient(135deg, #1a1aff, #009dff);
-    color: white;
-
-    box-shadow: 0 4px 18px rgba(0, 157, 255, 0.35);
-    transition: all 0.2s ease;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    background: #0b0b10;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 4px 4px 0 #00ff66;
+    transition: all 0.1s ease;
+    text-transform: uppercase;
 }
 
 
-    button:hover {
-    background: linear-gradient(135deg, #3b3bff, #33cfff);
-    box-shadow: 0 6px 24px rgba(51, 207, 255, 0.6);
-    transform: translateY(-2px);
-    }
+button:hover {
+    background: #00ff66;
+    color: #0b0b10;
+    box-shadow: 2px 2px 0 #00ff66;
+    transform: translate(2px, 2px);
+}
 
 #about{
     margin-top: 2em;
     padding: 1em;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.03);
+    border: 2px solid #00ff66;
+    background: #0b0b10;
+    color: #00ff66;
+    box-shadow: 6px 6px 0 #00ff66;
       max-width: 56%;
     margin-left: auto;
     margin-right: auto;
 }
 
 input{
-
-  margin-bottom: 2em;
-    background: linear-gradient(135deg, #1a1aff, #009dff);
-    color: white;
-     box-shadow: 0 4px 18px rgba(255, 255, 255, 0.35);
-    transition: all 0.2s ease;
- font-size: 1em;
+    margin: 1em 0 2em 0;
+    background: #0b0b10;
+    color: #00ff66;
+    font-size: 1em;
     font-weight: 600;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
+    border: 2px solid #00ff66;
+    border-radius: 0;
     padding: 0.4em 0.9em;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+input::placeholder{
+    color: rgba(0, 255, 102, 0.45);
+}
+
+input:focus{
+    outline: none;
+    box-shadow: 4px 4px 0 #00ff66;
+}
+
+#playersList, #customWordsList{
+    max-width: 56%;
+    margin: 1em auto;
+    text-align: center;
+}
+
+#playersList div, #customWordsList div{
+    display: inline-block;
+    margin: 0.4em 0.6em;
+    padding: 0.3em 0.5em;
+}
+
+#playersList button, #customWordsList button{
+    font-size: 0.6em;
+    margin: 0 0.4em 0 0;
+    padding: 0.15em 0.5em;
+    vertical-align: middle;
+}
+
+#customWordsTitle{
+    margin-top: 3em;
+}
+
+#onlyCustomWordsLabel{
+    display: block;
+    margin: 1.5em 0;
+    font-size: 0.85em;
 }
 
 
